@@ -1,0 +1,50 @@
+<TelaCadastro@Screen>:
+    name: 'telacadastro'
+    GridLayout:
+        cols: 2
+        spacing: dp(5)
+        size_hint: None, None
+        height: dp(100)
+        width: dp(600)
+        pos_hint: {'center_x': .45, 'center_y': .5}
+        Label:
+            text: 'Nome'
+        TextInput:
+
+
+        Label:
+            text: 'Telefone'
+        TextInput:
+
+
+        Label:
+            text: 'Email'
+        TextInput:
+
+
+
+<TelaPropaganda@Screen>:
+    name: 'telapropaganda'
+    on_touch_up: root.manager.current = 'telacadastro'
+
+    BoxLayout:
+        padding: dp(20)
+        orientation: 'vertical'
+        Image:
+            source: 'imagens/propa.jpg'
+            anim_delay: 5
+        Label:
+            size_hint_y: None
+            height: dp(100)
+            font_size: '30pt'
+            text: 'Clique aqui para se cadastrar e ficar ligado!'
+
+
+
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+ScreenManager:
+    transition: WipeTransition()
+    current: 'telapropaganda'
+    on_touch_up: app.timer_to_rest_screen()
+    TelaCadastro:
+    TelaPropaganda:
